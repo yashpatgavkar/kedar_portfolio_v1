@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Pan speed (CSS px/sec). Duration is derived from this so every card scrolls
 // at the same visual speed — longer pages just take proportionally longer.
-const PAN_SPEED = 70;
+const PAN_SPEED = 260;
 const PAUSE = 1.2; // seconds held at top and bottom
 
 // A page only pans if it overflows the frame by at least this fraction of the
@@ -85,7 +85,7 @@ const ScrollingPreview = ({
   const scrolls = scrollPx > 0;
   const animate = !reduceMotion && scrolls;
 
-  const pan = scrollPx / PAN_SPEED;
+  // Cap the one-way travel so exceptionally tall portfolio sheets still\n  // show obvious movement instead of appearing frozen.\n  const pan = Math.min(Math.max(scrollPx / PAN_SPEED, 5), 16);
   const total = pan * 2 + PAUSE * 2;
   const times = [
     0,
