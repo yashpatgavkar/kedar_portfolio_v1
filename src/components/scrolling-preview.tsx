@@ -85,7 +85,9 @@ const ScrollingPreview = ({
   const scrolls = scrollPx > 0;
   const animate = !reduceMotion && scrolls;
 
-  // Cap the one-way travel so exceptionally tall portfolio sheets still\n  // show obvious movement instead of appearing frozen.\n  const pan = Math.min(Math.max(scrollPx / PAN_SPEED, 5), 16);
+  // Cap the one-way travel so exceptionally tall portfolio sheets still
+  // show obvious movement instead of appearing frozen.
+  const pan = Math.min(Math.max(scrollPx / PAN_SPEED, 5), 16);
   const total = pan * 2 + PAUSE * 2;
   const times = [
     0,
