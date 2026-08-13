@@ -42,7 +42,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             {/* `src` can be any aspect ratio (tall pages pan, normal ones fit);
                 the wallpaper is an optional /assets/backgrounds/<id>.jpg. */}
             <ScrollingPreview
-              src={project.src}
+              src={project.previewSrc ?? project.src}
               alt={project.title}
               bg={`/assets/backgrounds/${project.id}.jpg`}
             />

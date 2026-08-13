@@ -178,6 +178,7 @@ export type Project = {
   category: string;
   title: string;
   src: string;
+  previewSrc?: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
   content: React.ReactNode | any;
@@ -250,6 +251,7 @@ const projects: Project[] = [
     category: "Branding",
     title: "Praveen Masale",
     src: "/assets/projects-screenshots/praveen-masale/landing.jpg",
+    previewSrc: "/assets/projects-screenshots/praveen-masale/preview.webp",
     screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
     live: "#",
@@ -272,6 +274,7 @@ const projects: Project[] = [
     category: "Packaging",
     title: "Chitle",
     src: "/assets/projects-screenshots/chitle/landing.jpg",
+    previewSrc: "/assets/projects-screenshots/chitle/preview.webp",
     screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
     live: "#",
@@ -293,8 +296,8 @@ const projects: Project[] = [
     id: "logos",
     category: "logo design",
     title: "Logos",
-    src: "/assets/projects-screenshots/logos/landing.png",
-    screenshots: ["landing.png"],
+    src: "/assets/projects-screenshots/logos/landing.jpg",
+    screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
     live: "#",
     get content() {
