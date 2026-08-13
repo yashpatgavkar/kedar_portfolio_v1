@@ -42,6 +42,20 @@ const ScrollingPreview = ({
   const viewportRef = useRef<HTMLDivElement>(null);
   const [scrollPx, setScrollPx] = useState(0);
   const [bgReady, setBgReady] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -83,7 +97,7 @@ const ScrollingPreview = ({
   }, [bg]);
 
   const scrolls = scrollPx > 0;
-  const animate = !reduceMotion && scrolls;
+  const animate = !reduceMotion && scrolls && isVisible;
 
   // Cap the one-way travel so exceptionally tall portfolio sheets still
   // show obvious movement instead of appearing frozen.
