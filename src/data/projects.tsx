@@ -293,15 +293,15 @@ const projects: Project[] = [
     id: "logos",
     category: "logo design",
     title: "Logos",
-    src: "/assets/projects-screenshots/logos/landing.jpg",
-    screenshots: ["landing.jpg"],
+    src: "/assets/projects-screenshots/logos/landing.png",
+    screenshots: ["landing.png"],
     skills: { frontend: [], backend: [] },
     live: "#",
     get content() {
       return (
         <div className="my-6">
           <Image
-            src="/assets/projects-screenshots/logos/landing.jpg"
+            src="/assets/projects-screenshots/logos/landing.png"
             alt="Logo design collection"
             width={900}
             height={6434}
