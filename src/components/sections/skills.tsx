@@ -9,7 +9,7 @@ const SkillsSection = () => (
   >
     <SectionHeader
       id="skills"
-      title="Tech Stack"
+      title="Creative Toolkit"
       desc="Graphic design, motion and 3D tools"
       className="static mb-10 sm:mb-14"
     />
