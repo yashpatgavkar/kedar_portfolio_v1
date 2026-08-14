@@ -191,7 +191,7 @@ const projects: Project[] = [
     category: "poster design",
     title: "Protect Wildlife",
     src: "/assets/projects-screenshots/storekit/landing.png",
-    screenshots: ["landing.png"],
+    screenshots: ["full.webp"],
     skills: {
       frontend: [
         
@@ -220,9 +220,9 @@ const projects: Project[] = [
     id: "codingducks",
     category: "Symbol Logos",
     title: "IIT Department Logos",
-    src: "/assets/projects-screenshots/codingducks/landing.png",
+    src: "/assets/projects-screenshots/codingducks/full.webp",
     previewSrc: "/assets/projects-screenshots/codingducks/preview.webp",
-    screenshots: ["landing.png"],
+    screenshots: ["full.webp"],
     skills: {
       frontend: [
         
@@ -237,7 +237,7 @@ const projects: Project[] = [
   return (
     <div className="my-6">
       <Image
-          src="/assets/projects-screenshots/codingducks/landing.png"
+          src="/assets/projects-screenshots/codingducks/full.webp"
           alt="IIT Department Logos"
           width={1200}
           height={700}
@@ -320,16 +320,16 @@ const projects: Project[] = [
     id: "nescafe",
     category: "Campaign Design",
     title: "Nescafé Gold Blend",
-    src: "/assets/projects-screenshots/nescafe/landing.png",
+    src: "/assets/projects-screenshots/nescafe/full.webp",
     previewSrc: "/assets/projects-screenshots/nescafe/preview.webp",
-    screenshots: ["landing.png"],
+    screenshots: ["full.webp"],
     skills: { frontend: [], backend: [] },
     live: "https://www.behance.net/gallery/254285531/Nescafe-gold",
     get content() {
       return (
         <div className="my-6">
           <Image
-            src="/assets/projects-screenshots/nescafe/landing.png"
+            src="/assets/projects-screenshots/nescafe/full.webp"
             alt="Nescafé Gold Blend Raksha Bandhan campaign"
             width={2048}
             height={1576}
@@ -343,16 +343,16 @@ const projects: Project[] = [
     id: "lexus",
     category: "Campaign Design",
     title: "Lexus ES 500e",
-    src: "/assets/projects-screenshots/lexus/landing.png",
+    src: "/assets/projects-screenshots/lexus/full.webp",
     previewSrc: "/assets/projects-screenshots/lexus/preview.webp",
-    screenshots: ["landing.png"],
+    screenshots: ["full.webp"],
     skills: { frontend: [], backend: [] },
     live: "#",
     get content() {
       return (
         <div className="my-6">
           <Image
-            src="/assets/projects-screenshots/lexus/landing.png"
+            src="/assets/projects-screenshots/lexus/full.webp"
             alt="Lexus ES 500e campaign"
             width={767}
             height={2048}
