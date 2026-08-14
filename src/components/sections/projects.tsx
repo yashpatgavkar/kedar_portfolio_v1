@@ -72,13 +72,23 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 </span>
               </div>
               <div className="shrink-0 flex items-center gap-4">
-                {project.live && project.live !== "#" && (
-                  <Link href={project.live} target="_blank">
+                {project.live && project.live !== "#" ? (
+                  <Link href={project.live} target="_blank" rel="noopener noreferrer">
                     <button className="group flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full hover:bg-primary/80 transition-colors">
                       Visit
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
                   </Link>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    title="Project link coming soon"
+                    className="flex items-center gap-2 bg-primary/50 text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full cursor-not-allowed"
+                  >
+                    Visit
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
                 )}
               </div>
             </div>
