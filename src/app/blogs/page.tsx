@@ -3,8 +3,8 @@ import { getBlogPosts } from "@/lib/mdx";
 import BlogListClient from "./blog-list-client";
 
 export const metadata = {
-  title: "Blog | Portfolio",
-  description: "Thoughts, tutorials, and updates.",
+  title: "Design Notes | Kedar Dixit",
+  description: "Graphic design, branding and visual storytelling by Kedar Dixit.",
 };
 
 export default function BlogPage() {
