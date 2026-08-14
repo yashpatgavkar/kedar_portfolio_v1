@@ -38,7 +38,7 @@ const HeroSection = () => {
 
       {/* Desktop composition copied from the reference positioning. */}
       <div className="relative hidden min-h-screen w-full md:block">
-        <div className="absolute left-[30%] right-[3.5%] top-28 z-0 flex items-start justify-between font-display text-[clamp(7rem,15vw,15rem)] font-extrabold leading-[0.72] tracking-[-0.09em] text-red-700/90">
+        <div className="absolute left-[27%] right-[5%] top-28 z-0 flex items-start justify-between font-display text-[clamp(6.5rem,12.5vw,12.5rem)] font-extrabold leading-[0.72] tracking-[-0.09em] text-red-700/90">
           <span className="about-wobble cursor-default">ABOUT</span>
           <span className="about-wobble cursor-default">ME</span>
         </div>
