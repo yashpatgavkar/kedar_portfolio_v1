@@ -274,8 +274,8 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     id: 2,
-    startDate: "Apr 2022",
-    endDate: "Dec 2024",
+    startDate: "Apr 2025",
+    endDate: "Dec 2025",
     title: "Graphic Designer",
     company: "INARCON Pvt. Ltd., Pune",
     description: [
