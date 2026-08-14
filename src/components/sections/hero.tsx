@@ -137,7 +137,27 @@ const HeroSection = () => {
             </div>
           )}
         </div>
-        <div className="grid col-span-1"></div>
+        <div className="relative col-span-1 hidden h-[calc(100dvh-4rem)] items-center justify-center overflow-hidden md:flex">
+          {/* Soft colour and vignette layers blend the poster into the existing
+              dark starfield instead of presenting it as a separate card. */}
+          <div className="absolute inset-y-[15%] left-[8%] right-[3%] rounded-full bg-red-700/20 blur-[90px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/40" />
+          <img
+            src="/assets/about-poster.webp"
+            alt="Kedar Dixit — graphic designer"
+            className="relative z-10 w-[min(84%,620px)] select-none object-contain opacity-90"
+            style={{
+              filter: "drop-shadow(0 30px 55px rgba(120, 0, 0, 0.32))",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 14%, black 82%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 13%, black 84%, transparent 100%)",
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 14%, black 82%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 13%, black 84%, transparent 100%)",
+            }}
+          />
+          <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_center,transparent_38%,hsl(var(--background))_86%)]" />
+        </div>
       </div>
       <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
