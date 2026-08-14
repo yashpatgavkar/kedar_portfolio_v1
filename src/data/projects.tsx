@@ -255,7 +255,7 @@ const projects: Project[] = [
     previewSrc: "/assets/projects-screenshots/praveen-masale/preview.webp",
     screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
-    live: "#",
+    live: "https://www.behance.net/gallery/254284669/Pravin-Masale-Packaging",
     get content() {
       return (
         <div className="my-6">
@@ -278,7 +278,7 @@ const projects: Project[] = [
     previewSrc: "/assets/projects-screenshots/chitle/preview.webp",
     screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
-    live: "#",
+    live: "https://www.behance.net/gallery/254284467/Chitale-Modak-Branding",
     get content() {
       return (
         <div className="my-6">
@@ -301,7 +301,7 @@ const projects: Project[] = [
     previewSrc: "/assets/projects-screenshots/logos/preview.webp",
     screenshots: ["landing.jpg"],
     skills: { frontend: [], backend: [] },
-    live: "#",
+    live: "https://www.behance.net/gallery/254285317/Logo-design",
     get content() {
       return (
         <div className="my-6">
@@ -324,7 +324,7 @@ const projects: Project[] = [
     previewSrc: "/assets/projects-screenshots/nescafe/preview.webp",
     screenshots: ["landing.png"],
     skills: { frontend: [], backend: [] },
-    live: "#",
+    live: "https://www.behance.net/gallery/254285531/Nescafe-gold",
     get content() {
       return (
         <div className="my-6">
