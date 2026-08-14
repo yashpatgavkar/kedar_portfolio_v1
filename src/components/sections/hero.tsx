@@ -30,7 +30,7 @@ const HeroSection = () => {
         </div>
 
         {/* The right half is intentionally empty: it is the portrait canvas. */}
-        <div className="min-h-[calc(100vh-7rem)] pt-24 md:pt-0">
+        <div className="flex min-h-[calc(100vh-7rem)] items-end pt-24 md:pt-0">
           <section className="relative z-10 grid w-full max-w-[930px] grid-cols-1 content-end gap-8 self-end md:grid-cols-[440px_260px] md:gap-x-28">
             {/* Identity + working actions */}
             <div>
