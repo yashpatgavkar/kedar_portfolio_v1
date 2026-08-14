@@ -46,7 +46,14 @@ const HeroSection = () => {
         <img
           src="/assets/about-portrait.png"
           alt="Portrait of Kedar Dixit"
-          style={{ left: "63%", top: "7%" }}
+          style={{
+            left: "63%",
+            top: "7%",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, black 0%, black 72%, rgba(0,0,0,0.72) 84%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, black 0%, black 72%, rgba(0,0,0,0.72) 84%, transparent 100%)",
+          }}
           className="pointer-events-none absolute z-[5] h-[min(95vh,900px)] w-auto max-w-none -translate-x-1/2 select-none object-contain drop-shadow-[0_28px_48px_rgba(55,0,0,0.32)]"
         />
 
