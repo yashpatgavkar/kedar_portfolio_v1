@@ -30,8 +30,8 @@ const HeroSection = () => {
         </div>
 
         {/* The right half is intentionally empty: it is the portrait canvas. */}
-        <div className="grid min-h-[calc(100vh-7rem)] grid-cols-1 pt-24 md:grid-cols-[minmax(520px,0.92fr)_minmax(380px,1.08fr)] md:pt-0">
-          <section className="relative z-10 grid max-w-[860px] grid-cols-1 content-end gap-8 self-end md:grid-cols-[minmax(235px,0.85fr)_minmax(230px,0.72fr)] md:gap-12">
+        <div className="min-h-[calc(100vh-7rem)] pt-24 md:pt-0">
+          <section className="relative z-10 grid w-full max-w-[930px] grid-cols-1 content-end gap-8 self-end md:grid-cols-[440px_260px] md:gap-x-28">
             {/* Identity + working actions */}
             <div>
               <p className="about-wobble mb-3 font-serif text-3xl italic leading-[0.85] text-foreground sm:text-4xl">
