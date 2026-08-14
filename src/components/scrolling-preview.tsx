@@ -62,7 +62,7 @@ const ScrollingPreview = ({
 
   useEffect(() => {
     setActiveSrc(src);
-  }, [activeSrc, fallbackSrc]);
+  }, [src]);
 
   useEffect(() => {
     let cancelled = false;
@@ -89,7 +89,7 @@ const ScrollingPreview = ({
       cancelled = true;
       window.removeEventListener("resize", compute);
     };
-  }, [src]);
+  }, [activeSrc, fallbackSrc]);
 
   // Preload the wallpaper so a missing/404 file falls back to the gradient
   // instead of rendering a broken background.
