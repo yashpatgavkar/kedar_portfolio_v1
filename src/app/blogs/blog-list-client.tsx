@@ -59,11 +59,11 @@ export default function BlogListClient({ posts }: { posts: Post[] }) {
             </span>
           </div>
           <h1 className="font-display text-3xl md:text-5xl leading-[0.95] tracking-tight">
-            Thoughts &<br />
-            <span className="text-[hsl(20,100%,70%)]">Dispatches</span>
+            Kedar’s<br />
+            <span className="text-[hsl(20,100%,70%)]">Design Notes</span>
           </h1>
           <p className="mt-6 text-muted-foreground text-lg max-w-lg leading-relaxed font-sans">
-            Notes on building things, breaking things, and occasionally writing about it.
+            Ideas, process and visual stories from Kedar Dixit’s graphic design practice.
           </p>
         </motion.div>
 
