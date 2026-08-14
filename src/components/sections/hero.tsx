@@ -45,8 +45,8 @@ const HeroSection = () => {
 
         <img
           src="/assets/about-portrait.png"
-          alt="Portrait of Kedar Dixit"
-          className="pointer-events-none absolute left-[43%] top-[19%] z-[5] h-[min(74vh,720px)] w-auto max-w-none -translate-x-1/2 select-none object-contain drop-shadow-[0_30px_55px_rgba(110,0,0,0.35)]"
+          style={{ left: "63%", top: "7%" }}
+className="pointer-events-none absolute z-[5] h-[min(95vh,900px)] w-auto max-w-none -translate-x-1/2 select-none object-contain ..."
         />
 
         {/* Left identity and working links */}
