@@ -4,15 +4,12 @@ import { useRef, useState } from "react";
 import { motion, useReducedMotion, useSpring } from "motion/react";
 import {
   Aperture,
-  Box,
   Brush,
-  Grid3X3,
   Image as ImageIcon,
   Layers3,
   MousePointer2,
   Palette,
   PenTool,
-  Ruler,
   Sparkles,
   Type,
 } from "lucide-react";
@@ -25,15 +22,12 @@ const DESIGN_KEYS = [
   { short: "Ae", label: "After Effects", accent: "#9999FF", icon: Sparkles },
   { short: "Pr", label: "Premiere Pro", accent: "#9999FF", icon: Aperture },
   { short: "Fg", label: "Figma", accent: "#F24E1E", icon: MousePointer2 },
-  { short: "Bl", label: "Blender", accent: "#F5792A", icon: Box },
-  { short: "C4D", label: "Cinema 4D", accent: "#3B82F6", icon: Box },
   { short: "Pn", label: "Pen Tool", accent: "#34D399", icon: PenTool },
   { short: "Ly", label: "Layers", accent: "#60A5FA", icon: Layers3 },
   { short: "Ty", label: "Typography", accent: "#F472B6", icon: Type },
-  { short: "Cl", label: "Colour", accent: "#FBBF24", icon: Palette },
-  { short: "Gr", label: "Grid", accent: "#A78BFA", icon: Grid3X3 },
   { short: "Br", label: "Brush", accent: "#FB7185", icon: Brush },
-  { short: "Rt", label: "Rulers", accent: "#2DD4BF", icon: Ruler },
+  { short: "Cv", label: "Canva", accent: "#00C4CC", icon: Palette },
+  { short: "CD", label: "CorelDRAW", accent: "#78BE20", icon: PenTool },
 ];
 
 export default function DesignKeyboard() {
@@ -90,8 +84,8 @@ export default function DesignKeyboard() {
             "after:pointer-events-none after:absolute after:inset-x-6 after:top-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent"
           )}
         >
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 sm:gap-3">
-            {DESIGN_KEYS.map(({ short, label, accent, icon: Icon }, index) => (
+          <div className="grid grid-cols-4 gap-2 sm:gap-3">
+            {DESIGN_KEYS.map(({ short, label, accent, icon: Icon }) => (
               <motion.button
                 type="button"
                 key={label}
@@ -109,8 +103,7 @@ export default function DesignKeyboard() {
                 className={cn(
                   "group relative min-h-20 overflow-hidden rounded-xl border border-white/10 bg-zinc-800 px-2 py-3 text-left text-white",
                   "shadow-[0_6px_0_#09090b,0_11px_18px_rgba(0,0,0,0.5)] outline-none transition-colors",
-                  "hover:border-[var(--key-accent)] focus-visible:border-[var(--key-accent)] focus-visible:ring-2 focus-visible:ring-[var(--key-accent)]",
-                  index === DESIGN_KEYS.length - 1 && "col-span-3 sm:col-span-1"
+                  "hover:border-[var(--key-accent)] focus-visible:border-[var(--key-accent)] focus-visible:ring-2 focus-visible:ring-[var(--key-accent)]"
                 )}
               >
                 <span
