@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Pan speed (CSS px/sec). Duration is derived from this so every card scrolls
 // at the same visual speed — longer pages just take proportionally longer.
-const PAN_SPEED = 260;
+const PAN_SPEED = 220;
 const PAUSE = 1.2; // seconds held at top and bottom
 
 // A page only pans if it overflows the frame by at least this fraction of the
@@ -33,14 +33,17 @@ const ScrollingPreview = ({
   src,
   alt,
   bg,
+  fallbackSrc,
 }: {
   src: string;
   alt: string;
   bg?: string;
+  fallbackSrc?: string;
 }) => {
   const reduceMotion = useReducedMotion();
   const viewportRef = useRef<HTMLDivElement>(null);
   const [scrollPx, setScrollPx] = useState(0);
+  const [activeSrc, setActiveSrc] = useState(src);
   const [bgReady, setBgReady] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -58,6 +61,10 @@ const ScrollingPreview = ({
   }, []);
 
   useEffect(() => {
+    setActiveSrc(src);
+  }, [activeSrc, fallbackSrc]);
+
+  useEffect(() => {
     let cancelled = false;
     const img = new window.Image();
     const compute = () => {
@@ -70,7 +77,12 @@ const ScrollingPreview = ({
       setScrollPx(overflow > vp.clientHeight * MIN_SCROLL_OVERFLOW ? overflow : 0);
     };
     img.onload = compute;
-    img.src = src;
+    img.onerror = () => {
+      if (!cancelled && fallbackSrc && activeSrc !== fallbackSrc) {
+        setActiveSrc(fallbackSrc);
+      }
+    };
+    img.src = activeSrc;
     if (img.complete) compute();
     window.addEventListener("resize", compute);
     return () => {
@@ -150,7 +162,7 @@ const ScrollingPreview = ({
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url("${src}")`,
+            backgroundImage: `url("${activeSrc}")`,
             // Tall pages fill width and pan; normal images cover the frame.
             backgroundSize: scrolls ? "100% auto" : "cover",
             backgroundRepeat: "no-repeat",
