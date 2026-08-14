@@ -43,6 +43,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 the wallpaper is an optional /assets/backgrounds/<id>.jpg. */}
             <ScrollingPreview
               src={project.previewSrc ?? project.src}
+              fallbackSrc={project.src}
               alt={project.title}
               bg={`/assets/backgrounds/${project.id}.jpg`}
             />
