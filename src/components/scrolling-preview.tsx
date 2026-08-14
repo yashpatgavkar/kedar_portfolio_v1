@@ -3,32 +3,13 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-// Pan speed (CSS px/sec). Duration is derived from this so every card scrolls
-// at the same visual speed — longer pages just take proportionally longer.
+// Transform-based animation is substantially lighter than animating
+// background-position: it stays on the compositor whenever possible.
 const PAN_SPEED = 220;
-const PAUSE = 1.2; // seconds held at top and bottom
-
-// A page only pans if it overflows the frame by at least this fraction of the
-// frame height. Anything shorter (landscape/square screenshots) is shown
-// "cover" instead, so any image looks right with no per-image config.
+const PAUSE = 1.2;
 const MIN_SCROLL_OVERFLOW = 0.2;
-
-// Neutral wallpaper when a card has no `bg` (or it fails to load), so adding a
-// project with just a screenshot still looks intentional.
 const FALLBACK_BG = "linear-gradient(135deg, #1e293b, #0f172a)";
 
-/**
- * Card preview: a screenshot floating over a wallpaper. Tall landing pages pan
- * top → bottom → back like a scroll-through recording; normal (landscape/square)
- * screenshots are shown "cover", centered. Detection is automatic from the
- * image's natural ratio — drop in any image and it just works.
- *
- * `bg` (the wallpaper) is optional; omit it for a neutral gradient.
- *
- * Layout/backgrounds are inline-styled because this project's Tailwind config
- * can't emit opacity-modified theme colors or arbitrary `bg-[length:…]` — those
- * utilities silently no-op.
- */
 const ScrollingPreview = ({
   src,
   alt,
@@ -67,15 +48,19 @@ const ScrollingPreview = ({
   useEffect(() => {
     let cancelled = false;
     const img = new window.Image();
+
     const compute = () => {
-      const vp = viewportRef.current;
-      if (cancelled || !vp || !img.naturalWidth) return;
-      const ratio = img.naturalHeight / img.naturalWidth;
-      const displayedHeight = vp.clientWidth * ratio; // height at bg-size "100% auto"
-      const overflow = displayedHeight - vp.clientHeight;
-      // Only pages meaningfully taller than the frame pan; the rest go "cover".
-      setScrollPx(overflow > vp.clientHeight * MIN_SCROLL_OVERFLOW ? overflow : 0);
+      const viewport = viewportRef.current;
+      if (cancelled || !viewport || !img.naturalWidth) return;
+
+      const renderedHeight =
+        viewport.clientWidth * (img.naturalHeight / img.naturalWidth);
+      const overflow = renderedHeight - viewport.clientHeight;
+      setScrollPx(
+        overflow > viewport.clientHeight * MIN_SCROLL_OVERFLOW ? overflow : 0
+      );
     };
+
     img.onload = compute;
     img.onerror = () => {
       if (!cancelled && fallbackSrc && activeSrc !== fallbackSrc) {
@@ -84,6 +69,7 @@ const ScrollingPreview = ({
     };
     img.src = activeSrc;
     if (img.complete) compute();
+
     window.addEventListener("resize", compute);
     return () => {
       cancelled = true;
@@ -91,28 +77,25 @@ const ScrollingPreview = ({
     };
   }, [activeSrc, fallbackSrc]);
 
-  // Preload the wallpaper so a missing/404 file falls back to the gradient
-  // instead of rendering a broken background.
   useEffect(() => {
     if (!bg) {
       setBgReady(false);
       return;
     }
+
     let cancelled = false;
     const img = new window.Image();
     img.onload = () => !cancelled && setBgReady(true);
     img.onerror = () => !cancelled && setBgReady(false);
     img.src = bg;
+
     return () => {
       cancelled = true;
     };
   }, [bg]);
 
   const scrolls = scrollPx > 0;
-  const animate = !reduceMotion && scrolls && isVisible;
-
-  // Cap the one-way travel so exceptionally tall portfolio sheets still
-  // show obvious movement instead of appearing frozen.
+  const animate = !reduceMotion && isVisible;
   const pan = Math.min(Math.max(scrollPx / PAN_SPEED, 5), 16);
   const total = pan * 2 + PAUSE * 2;
   const times = [
@@ -123,13 +106,16 @@ const ScrollingPreview = ({
     1,
   ];
 
+  const useFallback = () => {
+    if (fallbackSrc && activeSrc !== fallbackSrc) setActiveSrc(fallbackSrc);
+  };
+
   return (
     <div
       className="pointer-events-none absolute inset-0"
       role="img"
       aria-label={alt}
     >
-      {/* wallpaper background (falls back to a gradient when `bg` is absent) */}
       <div
         style={{
           position: "absolute",
@@ -141,10 +127,8 @@ const ScrollingPreview = ({
         }}
       />
 
-      {/* floating screenshot panel */}
       <div
         ref={viewportRef}
-        className="sp-shot"
         style={{
           position: "absolute",
           left: 22,
@@ -158,35 +142,43 @@ const ScrollingPreview = ({
           border: "1px solid rgba(255,255,255,0.18)",
         }}
       >
-        <motion.div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage: `url("${activeSrc}")`,
-            // Tall pages fill width and pan; normal images cover the frame.
-            backgroundSize: scrolls ? "100% auto" : "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: scrolls ? "50% 0%" : "center",
-          }}
-          animate={
-            animate
-              ? {
-                backgroundPosition: [
-                  "50% 0%",
-                  "50% 100%",
-                  "50% 100%",
-                  "50% 0%",
-                  "50% 0%",
-                ],
-              }
-              : undefined
-          }
-          transition={
-            animate
-              ? { duration: total, ease: "easeInOut", repeat: Infinity, times }
-              : undefined
-          }
-        />
+        {scrolls ? (
+          <motion.img
+            key={activeSrc}
+            src={activeSrc}
+            alt=""
+            draggable={false}
+            onError={useFallback}
+            className="block w-full max-w-none select-none"
+            style={{ willChange: "transform" }}
+            animate={
+              animate
+                ? { y: [0, -scrollPx, -scrollPx, 0, 0] }
+                : { y: 0 }
+            }
+            transition={
+              animate
+                ? { duration: total, ease: "easeInOut", repeat: Infinity, times }
+                : { duration: 0 }
+            }
+          />
+        ) : (
+          <motion.img
+            key={activeSrc}
+            src={activeSrc}
+            alt=""
+            draggable={false}
+            onError={useFallback}
+            className="size-full select-none object-cover"
+            style={{ willChange: "transform" }}
+            animate={animate ? { scale: [1, 1.04, 1], x: [0, -5, 0] } : undefined}
+            transition={
+              animate
+                ? { duration: 14, ease: "easeInOut", repeat: Infinity }
+                : undefined
+            }
+          />
+        )}
       </div>
     </div>
   );
