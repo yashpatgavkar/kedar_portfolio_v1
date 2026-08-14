@@ -33,8 +33,8 @@ const config = {
   },
   social: {
     behance: "https://www.behance.net/kedardixit1",
-    linkedin: "https://www.linkedin.com/in/kedar-dixit-316909320/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BQOeZP4DQShiB81o7rbyX2w%3D%3D",
-    instagram: "https://www.instagram.com/hotchaddi",
+    linkedin: "https://www.linkedin.com/in/kedar-dixit-316909320",
+    instagram: "https://www.instagram.com/kedar__2005/",
     facebook: "https://www.facebook.com/HotChaddi/",
   },
 };
