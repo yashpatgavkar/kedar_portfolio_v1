@@ -43,6 +43,12 @@ const HeroSection = () => {
           <span className="about-wobble cursor-default">ME</span>
         </div>
 
+        <img
+          src="/assets/about-portrait.png"
+          alt="Portrait of Kedar Dixit"
+          className="pointer-events-none absolute left-[43%] top-[19%] z-[5] h-[min(74vh,720px)] w-auto max-w-none -translate-x-1/2 select-none object-contain drop-shadow-[0_30px_55px_rgba(110,0,0,0.35)]"
+        />
+
         {/* Left identity and working links */}
         <section className="absolute left-[4.5%] top-[26%] z-10 w-[22rem]">
           <p className="about-wobble mb-3 font-serif text-4xl italic leading-[0.85] text-foreground">
