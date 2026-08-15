@@ -14,7 +14,7 @@ function MainPage() {
   return (
     <SmoothScroll>
       <ImageSequence />
-      <main className={cn("bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>
+      <main className={cn("portfolio-section-stack bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>
         <HeroSection />
         <SkillsSection />
         <ExperienceSection />
