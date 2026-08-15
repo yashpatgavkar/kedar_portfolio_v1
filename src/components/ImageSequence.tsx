@@ -17,7 +17,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Generate all 300 frame URLs once.
+// Generate only the approved frame URLs once.
 const FRAME_URLS = getAllFrameUrls();
 
 // Scroll distance used by the pinned animation.
@@ -104,7 +104,7 @@ export default function ImageSequence() {
 
   return (
     <>
-      {/* Loading screen while the 300 frames are loading */}
+      {/* Loading screen while the image sequence is loading */}
       {(isLoading || !isReady) && (
         <Loader
           progress={progress}
