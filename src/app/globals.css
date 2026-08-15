@@ -243,3 +243,30 @@ body > canvas {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Layer the portfolio sections on desktop: the About view begins over the
+   final canvas frames, then every following section glides over the prior one.
+   This is pure layout (not an extra scroll animation), so it stays light. */
+@media (min-width: 768px) {
+  .portfolio-section-stack {
+    position: relative;
+    z-index: 1;
+    margin-top: -12vh;
+  }
+
+  .portfolio-section-stack > section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .portfolio-section-stack > section + section {
+    margin-top: -12vh;
+  }
+
+  .portfolio-section-stack > section:nth-child(1) { z-index: 1; }
+  .portfolio-section-stack > section:nth-child(2) { z-index: 2; }
+  .portfolio-section-stack > section:nth-child(3) { z-index: 3; }
+  .portfolio-section-stack > section:nth-child(4) { z-index: 4; }
+  .portfolio-section-stack > section:nth-child(5) { z-index: 5; }
+}
