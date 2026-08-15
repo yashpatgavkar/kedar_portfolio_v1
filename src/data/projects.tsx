@@ -251,16 +251,16 @@ const projects: Project[] = [
     id: "praveen-masale",
     category: "Branding",
     title: "Praveen Masale",
-    src: "/assets/projects-screenshots/praveen-masale/landing.jpg",
+    src: "/assets/projects-screenshots/praveen-masale/landing.png",
     previewSrc: "/assets/projects-screenshots/praveen-masale/preview.webp",
-    screenshots: ["landing.jpg"],
+    screenshots: ["landing.png"],
     skills: { frontend: [], backend: [] },
     live: "https://www.behance.net/gallery/254284669/Pravin-Masale-Packaging",
     get content() {
       return (
         <div className="my-6">
           <Image
-            src="/assets/projects-screenshots/praveen-masale/landing.jpg"
+            src="/assets/projects-screenshots/praveen-masale/landing.png"
             alt="Praveen Masale branding"
             width={827}
             height={12000}
@@ -274,16 +274,16 @@ const projects: Project[] = [
     id: "chitle",
     category: "Packaging",
     title: "Chitle",
-    src: "/assets/projects-screenshots/chitle/landing.jpg",
+    src: "/assets/projects-screenshots/chitle/landing.png",
     previewSrc: "/assets/projects-screenshots/chitle/preview.webp",
-    screenshots: ["landing.jpg"],
+    screenshots: ["landing.png"],
     skills: { frontend: [], backend: [] },
     live: "https://www.behance.net/gallery/254284467/Chitale-Modak-Branding",
     get content() {
       return (
         <div className="my-6">
           <Image
-            src="/assets/projects-screenshots/chitle/landing.jpg"
+            src="/assets/projects-screenshots/chitle/landing.png"
             alt="Chitle packaging"
             width={735}
             height={6389}
@@ -299,7 +299,7 @@ const projects: Project[] = [
     title: "Logos",
     src: "/assets/projects-screenshots/logos/landing.png",
     previewSrc: "/assets/projects-screenshots/logos/preview.webp",
-    screenshots: ["landing.jpg"],
+    screenshots: ["landing.png"],
     skills: { frontend: [], backend: [] },
     live: "https://www.behance.net/gallery/254285317/Logo-design",
     get content() {
