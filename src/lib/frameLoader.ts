@@ -1,4 +1,4 @@
-export const FRAME_COUNT = 300;
+// Stop the scroll sequence at the approved final visual frame.\nexport const FRAME_COUNT = 240;
 
 export const FRAME_DIRECTORY = "/frames";
 
