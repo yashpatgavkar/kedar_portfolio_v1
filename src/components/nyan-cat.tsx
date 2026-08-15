@@ -92,7 +92,7 @@ const AnimatedDiv = ({
       onClick={handlePause}
     >
       <img
-        src="/assets/paint-stroke.png"
+        src="/assets/paint-stroke.gif"
         className={cn("fixed z-10 h-40 w-auto")}
         alt="Paint stroke"
       />
