@@ -90,17 +90,7 @@ export default function ImageSequence() {
 
           scrub: true,
 
-          // Turn this off after testing.
-          markers: true,
-
           invalidateOnRefresh: true,
-
-          onUpdate: (self) => {
-            console.log(
-              "Scroll progress:",
-              self.progress
-            );
-          },
         },
 
         onUpdate: renderFrame,
