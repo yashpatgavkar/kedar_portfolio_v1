@@ -3,7 +3,7 @@ import { config } from "@/data/config";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY\n  ? new Resend(process.env.RESEND_API_KEY)\n  : null;
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 3;
@@ -40,9 +40,6 @@ export async function POST(req: Request) {
     } = Email.safeParse(body);
     if (!zodSuccess)
       return Response.json({ error: zodError?.message }, { status: 400 });
-      console.log("API KEY:", !!process.env.RESEND_API_KEY);
-console.log("TO:", config.email);
-console.log("FROM:", "Portfolio <onboarding@resend.dev>");
     const { data: resendData, error: resendError } = await resend.emails.send({
       
       from: "Porfolio <onboarding@resend.dev>",
@@ -54,8 +51,6 @@ console.log("FROM:", "Portfolio <onboarding@resend.dev>");
         message: zodData.message,
       }) as React.ReactElement,
     });
-    console.log("RESEND DATA:", resendData);
-console.log("RESEND ERROR:", resendError);
 
     if (resendError) {
       return Response.json({ error: "Failed to send email" }, { status: 500 });
