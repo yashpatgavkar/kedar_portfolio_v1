@@ -27,7 +27,7 @@ const NyanCat = () => {
   };
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "n") spawnDiv();
+      if (e.key.toLowerCase() === "p") spawnDiv();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -92,9 +92,9 @@ const AnimatedDiv = ({
       onClick={handlePause}
     >
       <img
-        src="/assets/nyan-cat.gif"
+        src="/assets/paint-stroke.png"
         className={cn("fixed z-10 h-40 w-auto")}
-        alt="Nyan Cat"
+        alt="Paint stroke"
       />
     </motion.div>
   );
