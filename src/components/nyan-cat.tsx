@@ -75,7 +75,7 @@ const AnimatedDiv = ({
     controls.start({
       x: "100vw",
       y: randY,
-      transition: { duration: 5, ease: "linear" },
+      transition: { duration: 7.5, ease: "linear" },
     });
   }, [controls]);
 
