@@ -1,10 +1,8 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import {
   AnimatePresence,
   motion,
-  animate,
   useAnimationControls,
 } from "motion/react";
 
@@ -91,10 +89,14 @@ const AnimatedDiv = ({
       onAnimationComplete={onCompleted}
       onClick={handlePause}
     >
-      <img
-        src="/assets/paint-stroke.gif"
-        className={cn("fixed z-10 h-40 w-auto")}
-        alt="Paint stroke"
+      <video
+        src="/assets/cat.mp4"
+        className="fixed z-10 h-40 w-auto"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-label="Paint stroke"
       />
     </motion.div>
   );
