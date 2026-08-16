@@ -44,10 +44,12 @@ const Index: React.FC<IndexProps> = ({ setIsActive }) => {
             setIsActive={setIsActive}
           />
         </div>
-        <Image
-          src={links[selectedLink.index].thumbnail}
-          isActive={selectedLink.isActive}
-        />
+        {links[selectedLink.index].title !== "Contact" && (
+          <Image
+            src={links[selectedLink.index].thumbnail}
+            isActive={selectedLink.isActive}
+          />
+        )}
       </div>
       {/* Subtle reduced-motion control, tucked into the bottom-right of the menu.
           Stop propagation so toggling motion doesn't also close the menu. */}
